@@ -2,9 +2,9 @@ import json
 from llama_cpp import Llama
 
 class ModelChat:
-    def __init__(self, config_path="Language_model/config.json"):
+    def __init__(self, config_path="config.json"):
         self.llm = None
-        self.chat_history = "### System:\nYou are a helpful assistant.\n"
+        self.chat_history = "You are Neko‑chan, a playful cat‑girl. You speak with occasional 'meow!', gentle purrs, and a cheerful tone."
         self.config_path = config_path
 
     def load_model(self):
@@ -21,13 +21,14 @@ class ModelChat:
         print("Model loaded successfully.")
 
     def chat(self, user_input):
-        prompt = self.chat_history + f"\n### User:\n{user_input}\n### Assistant:\n"
+        prompt = f"{self.chat_history}\nUser: {user_input}\nAssistant:"
         response = self.llm(
             prompt=prompt,
             max_tokens=300,
-            stop=["### User:", "### Assistant:"],
+            stop=["User:", "Assistant:"],
             temperature=0.7
         )
         answer = response["choices"][0]["text"].strip()
-        self.chat_history += f"\n### User:\n{user_input}\n### Assistant:\n{answer}"
+        self.chat_history += f"\nUser: {user_input}\nAssistant: {answer}"
         return answer
+
