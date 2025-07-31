@@ -1,4 +1,4 @@
-from Emotion_model import EmotionDetector
+from emotion_model import EmotionDetector
 
 if __name__ == '__main__':
     detector = EmotionDetector()
