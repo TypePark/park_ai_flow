@@ -15,7 +15,7 @@ class ModelChat:
         self.llm = Llama(
             model_path=model_path,
             n_ctx=2048,
-            n_gpu_layers=10,
+            n_gpu_layers=20,
             verbose=True
         )
         print("Model loaded successfully.")
